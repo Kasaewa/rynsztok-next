@@ -1,0 +1,1 @@
+// kod dla pojedynczej misji, bedzie uzywany w zbiorczym widoku "MissionsView"

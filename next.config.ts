@@ -4,10 +4,4 @@ const nextConfig: NextConfig = {
   /* config options here */
 };
 
-const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
-};
-
 export default nextConfig;
