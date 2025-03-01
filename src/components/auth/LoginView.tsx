@@ -10,10 +10,10 @@ export const LoginView = () => {
       <h1 className={styles.title}>Legendy Rynsztoka</h1>
       <form id="register-form" className={styles.loginContainer}>
         <div className={styles.upper}>
-          <p className={styles.nieWybrane}>
+          <p className={styles.wybrane}>
             <Link href="/login">Logowanie</Link>
           </p>
-          <p className={styles.wybrane}>
+          <p className={styles.nieWybrane}>
             <Link href="/register">Rejestracja</Link>
           </p>
         </div>
