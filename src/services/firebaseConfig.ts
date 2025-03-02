@@ -5,13 +5,13 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } f
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAqe8FIF5iZJXj9NhUfG3jF-3teHD0V2nM",
-  authDomain: "legendy-rynsztoka.firebaseapp.com",
-  projectId: "legendy-rynsztoka",
-  storageBucket: "legendy-rynsztoka.firebasestorage.app",
-  messagingSenderId: "220637483565",
-  appId: "1:220637483565:web:a99b269a7ee0f7d86cdea4",
-  measurementId: "G-CCRTPBTH6V",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -39,3 +39,6 @@ export const registerUser = async (email: string, password: string) => {
     throw new Error("Registration failed");
   }
 };
+
+// Eksportujemy instancję auth na wypadek potrzeby w innych plikach
+export { auth };
