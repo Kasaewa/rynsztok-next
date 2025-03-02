@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: flex-start;
+  height: 100vh;
+  padding: 0 16px;
   background-image: url("/images/backgrounds/background.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -11,17 +12,19 @@
   font-family: "Montserrat", serif;
   color: white;
   text-align: center;
+  overflow-y: auto;
 }
 
 .title {
   font-family: "Passero One", sans-serif;
   font-weight: 400;
   font-size: 128px;
-  color: #fff;
+  //color: #fff;
   text-shadow: 28px 28px 28px 0 rgba(0, 0, 0, 0.5);
-  -webkit-text-stroke: 25px #1b1d1f;
-  margin: 60px 0;
+  //-webkit-text-stroke: 25px #1b1d1f;
+  margin: 20px 0;
   paint-order: stroke fill;
+  padding: 20px;
 }
 .title a {
   text-decoration: none; /* Usunięcie domyślnego podkreślenia */
@@ -156,4 +159,79 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .loginScreen {
+    padding: 8px; /* Dostosowanie do małych ekranów, aby uniknąć zbyt dużego odstępu */
+    overflow-y: auto;
+    background-position: 25% 25%;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .loginContainer {
+    width: 100%;
+    max-width: 450px; /* Dopasowanie szerokości kontenera */
+    margin: 0 auto; /* Wyrównanie kontenera na środku */
+    padding: 4px;
+    height: auto;
+  }
+
+  .upper {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 0;
+    justify-content: space-around;
+    width: 300px;
+    position: relative;
+  }
+
+  .loginNotClicked,
+  .loginClicked {
+    width: 100%;
+    max-width: 150px; /* Dopasowanie szerokości kontenera */
+    margin: 0 auto; /* Wyrównanie kontenera na środku */
+    padding: 4px;
+    font-size: 20px;
+  }
+
+  .formField {
+    width: auto; /* Zapewnia, że pole formularza zajmuje całą szerokość */
+    max-width: 400px;
+    margin: 20px;
+  }
+  .emailText,
+  .passwordText {
+    width: 100%; /* Zapewnia, że pole formularza zajmuje całą szerokość */
+    max-width: 400px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inputBox {
+    padding: auto;
+    margin: 0;
+    width: 100%;
+    max-width: 400px; /* Dopasowanie szerokości inputów do mniejszych ekranów */
+  }
+
+  .submitButton {
+    width: 100%; /* Dopasowanie przycisku do szerokości */
+    margin: auto;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
+  .downContainer {
+    width: 100%;
+    padding: auto;
+    font-size: 20px; /* Zmniejszenie czcionki dla mniejszych ekranów */
+    margin-top: 8px;
+  }
 }
