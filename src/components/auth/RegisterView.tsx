@@ -21,13 +21,15 @@ export const RegisterView = () => {
       // Możesz przekierować użytkownika po zarejestrowaniu
       window.location.href = "/login"; // Przykład przekierowania do strony logowania
     } catch {
-      setError("Błąd: Sprawdź dane logowania.");
+      setError("Błąd: Konto już istnieje.");
     }
   };
 
   return (
     <section className={styles.loginScreen}>
-      <h1 className={styles.title}>Legendy Rynsztoka</h1>
+      <h1 className={styles.title}>
+        <Link href="/">Legendy Rynsztoka</Link>
+      </h1>
       <form id="register-form" className={styles.loginContainer} onSubmit={handleSubmit}>
         <div className={styles.upper}>
           <p className={styles.loginNotClicked}>
