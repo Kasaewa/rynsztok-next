@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import styles from "./styles/RegisterView.module.scss";
-import { loginUser, registerUser } from "../../services/firebaseConfig"; // Poprawiona ścieżka
+import { registerUser } from "../../services/firebaseConfig"; // Poprawiona ścieżka
 
 export const RegisterView = () => {
   // Stan dla emaila, hasła oraz błędu
