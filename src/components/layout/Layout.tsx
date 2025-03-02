@@ -19,9 +19,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className={styles.layoutWrapper}>
-      <Navbar />
-      <SideNavigation />
-      <PageWrapper>{children}</PageWrapper>;
+      <PageWrapper>{children}</PageWrapper>
     </div>
   );
 };
