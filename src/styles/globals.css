@@ -10,3 +10,11 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
+h1 {
+  font-family: var(--font-passero-one), sans-serif;
+}
+
+p {
+  font-family: var(--font-montserrat), sans-serif;
+}
