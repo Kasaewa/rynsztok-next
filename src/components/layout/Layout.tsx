@@ -10,7 +10,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   // Sprawdzamy czy jesteśmy na stronie logowania lub rejestracji
-  const isAuthPage = pathname === "/login" || pathname === "/register";
+   const isAuthPage = pathname === "/" || pathname === "/login" || pathname === "/register";
 
   // Jeśli jesteśmy na stronie auth, zwracamy tylko children bez layoutu - bo nie chcemy mieć bocznego menu i gornego menu i stopki
   if (isAuthPage) {
@@ -19,7 +19,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className={styles.layoutWrapper}>
-      <PageWrapper>{children}</PageWrapper>
+      <Navbar />
+      <SideNavigation />
+      <PageWrapper>{children}</PageWrapper>;
     </div>
   );
 };
