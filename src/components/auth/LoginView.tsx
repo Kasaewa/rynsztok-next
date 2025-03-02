@@ -7,7 +7,7 @@ import styles from "./styles/LoginView.module.scss";
 export const LoginView = () => {
   return (
     <section className={styles.loginScreen}>
-      <h1 className={styles.title}>Legendy Rynsztoka</h1>
+      <h1 className={styles.title}><Link href="/">Legendy Rynsztoka</Link></h1>
       <form id="register-form" className={styles.loginContainer}>
         <div className={styles.upper}>
           <p className={styles.loginClicked}>
