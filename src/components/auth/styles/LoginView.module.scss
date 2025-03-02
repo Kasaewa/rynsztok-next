@@ -41,15 +41,14 @@
   position: relative;
 }
 
-// klasy najlepiej pisac po angielsku w kodzie
-.wybrane {
+
+.loginClicked {
   width: 250px;
   height: 50px;
-  border: 4px solid #000;
-  border-bottom: none;
-  background: #d9d9d9;
+  border-radius: 100%;
+  fill: radial-gradient(50% 50% at 50% 50%, rgb(17, 0, 255) 0%, rgb(17, 0, 255) 75%, rgb(17, 0, 255) 100%);
   padding: 4px;
-  padding-top: 16px;
+  padding-top: 4px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 24px;
@@ -57,7 +56,7 @@
   margin: 0;
 }
 
-.nieWybrane {
+.loginNotClicked {
   width: 250px;
   height: 46px;
   border: 4px solid #000;
@@ -138,15 +137,17 @@
   }
 }
 
-.ryzyko {
+.downContainer {
   width: 600px;
-  height: 56px;
+  height: 70px;
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   background: #646423;
-  margin-top: 32px;
   font-family: "Passero One", sans-serif;
   font-weight: 400;
-  font-size: 48px;
+  font-size: 36px;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
