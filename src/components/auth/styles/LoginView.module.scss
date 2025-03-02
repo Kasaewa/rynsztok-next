@@ -33,17 +33,17 @@
 }
 
 .upper {
-  margin: auto;
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  margin: auto;
+  justify-content: space-between;
   width: 500px;
   position: relative;
 }
 
 
 .loginClicked {
-  width: 250px;
+  width: 228px;
   height: 50px;
   border-radius: 100%;
   backgtound: radial-gradient(50% 50% at 50% 50%, rgb(17, 0, 255) 0%, rgb(17, 0, 255) 75%, rgb(17, 0, 255) 100%);
@@ -56,7 +56,7 @@
 }
 
 .loginNotClicked {
-  width: 250px;
+  width: 228px;
   height: 50px;
   background: #d9d9d9;
   padding: 16px;
