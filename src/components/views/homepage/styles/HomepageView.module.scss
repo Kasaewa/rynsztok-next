@@ -11,6 +11,7 @@
   font-family: "Montserrat", serif;
   color: white;
   text-align: center;
+  gap: 40px; /* DODAJE ODSTĘP 40px MIĘDZY ELEMENTAMI */
 }
 
 .title {
@@ -20,21 +21,16 @@
   color: #fff;
   text-shadow: 28px 28px 28px 0 rgba(0, 0, 0, 0.5);
   -webkit-text-stroke: 25px #1b1d1f;
-  margin: 60px 0;
   paint-order: stroke fill;
 }
 
-
 .homepageContainer {
-  margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Wyrównanie przycisków */
   align-items: center;
-  width: 600px;
-  position: relative;
-  margin-top: 24px;
+  gap: 40px; /* Odstęp między przyciskami */
+  width: 100%; /* Dostosowanie szerokości */
 }
-
 
 .buttonLogin {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -49,7 +45,6 @@
   text-align: center;
   color: #fff;
   border: none;
-  margin: auto;
 
   &:hover {
     background-color: #ffcc00;
@@ -62,9 +57,11 @@
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   background: #646423;
-  margin-top: 0;
   font-family: "Passero One", sans-serif;
   font-weight: 400;
   font-size: 48px;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
