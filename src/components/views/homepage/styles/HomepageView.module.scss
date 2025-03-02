@@ -30,6 +30,8 @@
   align-items: center;
   gap: 40px; /* Odstęp między przyciskami */
   width: 100%; /* Dostosowanie szerokości */
+  margin-top: 20px; /* Zmniejsza odstęp od tytułu */
+  margin-bottom: 40px; /* Powiększa odstęp nad downContainer */
 }
 
 .buttonLogin {
