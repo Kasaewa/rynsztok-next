@@ -24,21 +24,15 @@
   paint-order: stroke fill;
 }
 
-.loginContainer {
-  background: rgba(217, 217, 217, 1);
-  width: 500px;
-  height: 468px;
-  margin: 0 auto 16px;
-  border: 4px solid #1b1d1f;
-}
 
 .homepageContainer {
   margin: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 500px;
+  width: 600px;
   position: relative;
+  margin-top: 24px;
 }
 
 
@@ -47,15 +41,15 @@
   background: #646423;
   border-radius: 20px;
   padding: 10px;
-  width: 274px;
-  height: 50px;
+  width: 256px;
+  height: 100px;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 48px;
   text-align: center;
   color: #fff;
   border: none;
-  margin-top: 48px;
+  margin: auto;
 
   &:hover {
     background-color: #ffcc00;
@@ -68,7 +62,7 @@
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   background: #646423;
-  margin-top: 32px;
+  margin-top: 0;
   font-family: "Passero One", sans-serif;
   font-weight: 400;
   font-size: 48px;
