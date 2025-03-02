@@ -7,15 +7,15 @@ export const HomepageView = () => {
     <section className={styles.homepage}>
       <h1 className={styles.title}>Legendy Rynsztoka</h1>
         
-        <div className={styles.homepage.container}>
-          <Link href="/login"><button className={styles.button.login}>
+        <div className={styles.homepage-container}>
+          <Link href="/login"><button className={styles.button-login}>
             Logowanie
           </button></Link>
-          <button className={styles.button.login}>
+          <button className={styles.button-login}>
             <Link href="/register">Rejestracja</Link>
           </button>
             
-      <div className={styles.ryzyko}>
+      <div className={styles.down-container}>
         <p>Wchodzisz na własne ryzyko!</p>
       </div>
     </section>
