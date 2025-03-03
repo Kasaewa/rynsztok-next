@@ -1,0 +1,63 @@
+.hellopage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  padding: 0 16px;
+  background-image: url("/images/backgrounds/background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Montserrat", serif;
+  color: white;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.title {
+  font-family: "Passero One", sans-serif;
+  font-weight: 400;
+  font-size: 128px;
+  color: #fff;
+  text-shadow: 28px 28px 28px 0 rgba(0, 0, 0, 0.5);
+  -webkit-text-stroke: 25px #1b1d1f;
+  margin: 20px 0;
+  paint-order: stroke fill;
+  padding: 20px;
+}
+
+.submitButton {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: #646423;
+  border-radius: 20px;
+  padding: 10px;
+  width: 274px;
+  height: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+  color: #fff;
+  border: none;
+  margin-top: 48px;
+
+  &:hover {
+    background-color: #ffcc00;
+  }
+}
+
+.downContainer {
+  width: 600px;
+  height: 70px;
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  background: #646423;
+  font-family: "Passero One", sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

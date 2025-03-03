@@ -1,9 +1,10 @@
 // src/services/FirebaseConfig.ts
 
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
-// Your web app's Firebase configuration
+// Twoja konfiguracja Firebase
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -14,15 +15,16 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
+// Inicjalizacja Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 // Funkcja logowania użytkownika
 export const loginUser = async (email: string, password: string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return userCredential.user; // Zwróć obiekt użytkownika
+    return userCredential.user;
   } catch (error) {
     console.error("Login failed", error);
     throw new Error("Login failed");
@@ -33,12 +35,36 @@ export const loginUser = async (email: string, password: string) => {
 export const registerUser = async (email: string, password: string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    return userCredential.user; // Zwróć obiekt użytkownika
+    return userCredential.user;
   } catch (error) {
     console.error("Registration failed", error);
     throw new Error("Registration failed");
   }
 };
 
-// Eksportujemy instancję auth na wypadek potrzeby w innych plikach
-export { auth };
+// Funkcja do zapisu nickname do Firestore
+export const addUserNickname = async (userId: string, nickname: string) => {
+  try {
+    await addDoc(collection(db, "users"), {
+      userId,
+      nickname,
+      createdAt: new Date(),
+    });
+    console.log("Nickname zapisany do Firestore!");
+  } catch (error) {
+    console.error("Błąd zapisu nickname'a:", error);
+  }
+};
+
+// Funkcja wylogowywania
+export const logoutUser = async () => {
+  try {
+    await signOut(auth);
+    console.log("Wylogowano pomyślnie");
+  } catch (error) {
+    console.error("Błąd podczas wylogowywania:", error);
+  }
+};
+
+// Eksportujemy instancję auth i db na wypadek potrzeby w innych plikach
+export { auth, db, collection, addDoc };

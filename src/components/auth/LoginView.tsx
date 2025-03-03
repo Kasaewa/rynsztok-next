@@ -1,22 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { loginUser, registerUser } from "../../services/firebaseConfig"; // Poprawiona ścieżka
+import { useRouter } from "next/navigation"; // Poprawione importowanie
+import { loginUser, registerUser } from "../../services/firebaseConfig"; 
 import styles from "./styles/LoginView.module.scss";
 
 export const LoginView = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isLogin, setIsLogin] = useState(true); // Czy użytkownik loguje się czy rejestruje?
+  const [isLogin, setIsLogin] = useState(true); 
+  const [isRedirecting, setIsRedirecting] = useState(false); // Stan do przekierowania
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       if (isLogin) {
         await loginUser(email, password);
-        alert("Zalogowano pomyślnie!");
+        //alert("Zalogowano pomyślnie!");
+        setIsRedirecting(true);
       } else {
         await registerUser(email, password);
         alert("Konto utworzone!");
@@ -25,6 +29,13 @@ export const LoginView = () => {
       setError("Błąd: Sprawdź dane logowania.");
     }
   };
+
+  // Przekierowanie po zalogowaniu
+  useEffect(() => {
+    if (isRedirecting) {
+      router.push("/complete-registration");
+    }
+  }, [isRedirecting, router]);
 
   return (
     <section className={styles.loginScreen}>
@@ -40,20 +51,15 @@ export const LoginView = () => {
           >
             Logowanie
           </p>
-          <p
-            className={!isLogin ? styles.loginClicked : styles.loginNotClicked}
-            onClick={() => setIsLogin(false)}
-          >
-            Rejestracja
+          <p className={!isLogin ? styles.loginClicked : styles.loginNotClicked}>
+            <Link href="/register">Rejestracja</Link>
           </p>
         </div>
 
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         <div className={styles.formField}>
-          <label htmlFor="email" className={styles.emailText}>
-            E-mail:
-          </label>
+          <label htmlFor="email" className={styles.emailText}>E-mail:</label>
           <input
             type="email"
             className={styles.inputBox}
@@ -67,9 +73,7 @@ export const LoginView = () => {
         </div>
 
         <div className={styles.formField}>
-          <label htmlFor="password" className={styles.passwordText}>
-            Hasło:
-          </label>
+          <label htmlFor="password" className={styles.passwordText}>Hasło:</label>
           <input
             type="password"
             className={styles.inputBox}

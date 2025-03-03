@@ -10,6 +10,7 @@ export const RegisterView = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string>("");
+ // const [name, setName] = useState(""); // Dodajemy stan dla name
 
   // Funkcja do obsługi wysyłania formularza
   const handleSubmit = async (e: React.FormEvent) => {
@@ -69,6 +70,7 @@ export const RegisterView = () => {
             onChange={(e) => setPassword(e.target.value)} // Aktualizacja stanu password
           />
         </div>
+        
         <button type="submit" className={styles.submitButton}>
           Dalej!
         </button>
