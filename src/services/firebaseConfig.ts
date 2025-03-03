@@ -1,10 +1,10 @@
 // src/services/FirebaseConfig.ts
 
-import { initializeApp, getApp, getApps } from "firebase/app"; // Import functions to manage multiple Firebase apps
+import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
-// Konfiguracja Firebase
+// Twoja konfiguracja Firebase
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -15,12 +15,8 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Inicjalizacja Firebase tylko po stronie klienta (wymaga sprawdzenia, czy aplikacja jest już zainicjowana)
-if (typeof window !== "undefined" && !getApps().length) {
-  initializeApp(firebaseConfig);  // Inicjalizuj Firebase, jeśli aplikacja nie została wcześniej zainicjowana
-}
-
-const app = getApp();  // Jeśli Firebase już jest zainicjowane, pobierz istniejącą instancję
+// Inicjalizacja Firebase
+const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
