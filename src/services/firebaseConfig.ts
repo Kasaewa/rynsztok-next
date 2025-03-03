@@ -1,10 +1,10 @@
 // src/services/FirebaseConfig.ts
 
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApp, getApps } from "firebase/app"; // Import functions to manage multiple Firebase apps
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
-// Twoja konfiguracja Firebase
+// Your Firebase configuration object
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -15,12 +15,13 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Inicjalizacja Firebase
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase only if it hasn't been initialized yet
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp(); // Check if there are any initialized apps
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Funkcja logowania użytkownika
+// Functions for user authentication and Firestore operations
+
 export const loginUser = async (email: string, password: string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -31,7 +32,6 @@ export const loginUser = async (email: string, password: string) => {
   }
 };
 
-// Funkcja rejestracji użytkownika
 export const registerUser = async (email: string, password: string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -42,7 +42,6 @@ export const registerUser = async (email: string, password: string) => {
   }
 };
 
-// Funkcja do zapisu nickname do Firestore
 export const addUserNickname = async (userId: string, nickname: string) => {
   try {
     await addDoc(collection(db, "users"), {
@@ -56,7 +55,6 @@ export const addUserNickname = async (userId: string, nickname: string) => {
   }
 };
 
-// Funkcja wylogowywania
 export const logoutUser = async () => {
   try {
     await signOut(auth);
@@ -66,5 +64,5 @@ export const logoutUser = async () => {
   }
 };
 
-// Eksportujemy instancję auth i db na wypadek potrzeby w innych plikach
+// Export Firebase services (auth, db) to use in other parts of your app
 export { auth, db, collection, addDoc };
