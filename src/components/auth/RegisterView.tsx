@@ -18,8 +18,9 @@ export const RegisterView = () => {
     try {
       // Wywołanie funkcji rejestracji
       await registerUser(email, password);
-      setMessage("Konto zostało utworzone pomyślnie. Sprawdź swoją skrzynkę pocztową, aby zweryfikować e-mail.");
-    } catch  {
+      setMessage("Konto zostało utworzone pomyślnie.");
+      alert("Sprawdź swoją skrzynkę pocztową, aby zweryfikować e-mail.");
+    } catch {
       setError("Błąd: Konto już istnieje lub wystąpił inny problem.");
     }
   };

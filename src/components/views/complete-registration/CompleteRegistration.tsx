@@ -29,6 +29,7 @@ const CompleteRegistration = () => {
         }
       }
     });
+    
 
     return () => unsubscribe(); // Oczyszczenie subskrypcji
   }, [auth, router, db]);
@@ -56,14 +57,15 @@ const CompleteRegistration = () => {
       setLoading(false);
     }
   };
-
+    
   return (
     <section className={styles.registrationPage}>
       <h1 className={styles.title}>Legendy Rynsztoka</h1>
-      <h2>Uzupełnij swoje dane</h2>
+      <h2 className={styles.title2}>Jak Cię zwą?</h2>
       
-      <form onSubmit={handleSaveNickname} className={styles.formContainer}>
+      <form onSubmit={handleSaveNickname} className={styles.inputNameContainer}>
         <input
+          className={styles.formContainer}
           type="text"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
