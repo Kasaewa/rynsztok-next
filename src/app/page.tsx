@@ -1,4 +1,4 @@
-"use client";
+//"use client";
 
 import { HomepageView } from "../components/views/homepage/HomepageView";
 
