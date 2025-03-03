@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation"; // Poprawione importowanie
 import { loginUser, registerUser } from "../../services/firebaseConfig"; 
+import { getAuth } from "firebase/auth"; // Import Firebase Auth
+import { getFirestore, doc, getDoc } from "firebase/firestore"; // Import Firestore
 import styles from "./styles/LoginView.module.scss";
 
 export const LoginView = () => {
@@ -13,6 +15,8 @@ export const LoginView = () => {
   const [isLogin, setIsLogin] = useState(true); 
   const [isRedirecting, setIsRedirecting] = useState(false); // Stan do przekierowania
   const router = useRouter();
+  const auth = getAuth();
+  const db = getFirestore();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,6 +47,34 @@ export const LoginView = () => {
       router.push("/complete-registration"); // Możesz to zmienić na stronę główną lub dashboard
     }
   }, [isRedirecting, router]);
+
+// Przekierowanie po zalogowaniu
+  useEffect(() => {
+    if (isRedirecting) {
+      const checkNickname = async () => {
+        const user = auth.currentUser;
+        if (user) {
+          // Pobieramy dane użytkownika z Firestore
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+          if (userDoc.exists()) {
+            const nickname = userDoc.data().nickname;
+            if (nickname) {
+              // Jeśli nickname istnieje, przekierowujemy na stronę hellopage
+              router.push("/hellopage");
+            } else {
+              // Jeśli nickname nie istnieje, przekierowujemy na stronę complete-registration
+              router.push("/complete-registration");
+            }
+          } else {
+            // Jeśli dokument użytkownika nie istnieje, przekierowujemy na stronę complete-registration
+            router.push("/complete-registration");
+          }
+        }
+      };
+
+      checkNickname();
+    }
+  }, [isRedirecting, router, auth, db]);
 
   return (
     <section className={styles.loginScreen}>

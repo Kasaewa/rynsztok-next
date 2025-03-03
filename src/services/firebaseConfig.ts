@@ -1,6 +1,6 @@
 // src/services/FirebaseConfig.ts
 
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp  } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
@@ -16,7 +16,8 @@ const firebaseConfig = {
 };
 
 // Inicjalizacja Firebase
-const app = initializeApp(firebaseConfig);
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+//const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 

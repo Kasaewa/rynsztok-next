@@ -6,6 +6,7 @@ import { getAuth, onAuthStateChanged, User } from "firebase/auth";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import styles from "./styles/CompleteRegistrationView.module.scss";
 
+
 const CompleteRegistration = () => {
   const [nickname, setNickname] = useState("");
   const [loading, setLoading] = useState(false);
@@ -14,6 +15,7 @@ const CompleteRegistration = () => {
   const auth = getAuth();
   const db = getFirestore();
 
+  
   // Pobieranie zalogowanego użytkownika
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
