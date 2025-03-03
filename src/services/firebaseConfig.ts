@@ -20,7 +20,10 @@ const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp(); /
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Functions for user authentication and Firestore operations
+
+if (!getApps().length) {
+  initializeApp(firebaseConfig);  // Tylko jeśli aplikacja nie została jeszcze zainicjalizowana
+}
 
 export const loginUser = async (email: string, password: string) => {
   try {
