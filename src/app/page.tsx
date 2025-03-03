@@ -1,3 +1,5 @@
+"use client";
+
 import { HomepageView } from "../components/views/homepage/HomepageView";
 
 const Home = async () => {
