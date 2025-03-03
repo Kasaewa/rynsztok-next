@@ -77,7 +77,7 @@ const HelloPage = () => {
       {error && <p className={styles.error}>{error}</p>}
 
       <div>
-        <button onClick={handleLogout} disabled={loading}>
+        <button onClick={handleLogout} disabled={loading} className={styles.submitButton}>
           {loading ? "Wylogowywanie..." : "Wyloguj"}
         </button>
       </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Poprawione importowanie
+import { useRouter } from "next/navigation"; 
 import { loginUser, registerUser } from "../../services/firebaseConfig"; 
 import styles from "./styles/LoginView.module.scss";
 
@@ -18,22 +18,29 @@ export const LoginView = () => {
     e.preventDefault();
     try {
       if (isLogin) {
+        // Logowanie użytkownika
         await loginUser(email, password);
-        //alert("Zalogowano pomyślnie!");
-        setIsRedirecting(true);
+        setIsRedirecting(true); // Przekierowanie po udanym logowaniu
       } else {
+        // Rejestracja użytkownika
         await registerUser(email, password);
-        alert("Konto utworzone!");
+        alert("Konto utworzone! Sprawdź swoją skrzynkę pocztową, aby zweryfikować e-mail.");
       }
-    } catch {
-      setError("Błąd: Sprawdź dane logowania.");
-    }
+    } catch (err: unknown) {
+  // Sprawdzamy, czy err jest obiektem i czy ma właściwość message
+  if (err instanceof Error) {
+    setError(err.message || "Błąd: Sprawdź dane logowania.");
+  } else {
+    // Jeśli to nie jest obiekt Error, to wyświetlamy ogólny komunikat o błędzie
+    setError("Błąd: Sprawdź dane logowania.");
+  }
+}
   };
 
-  // Przekierowanie po zalogowaniu
+  // Przekierowanie po zalogowaniu, jeśli weryfikacja e-maila zakończona pomyślnie
   useEffect(() => {
     if (isRedirecting) {
-      router.push("/complete-registration");
+      router.push("/complete-registration"); // Możesz to zmienić na stronę główną lub dashboard
     }
   }, [isRedirecting, router]);
 

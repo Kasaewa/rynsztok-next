@@ -1,7 +1,7 @@
 // src/services/FirebaseConfig.ts
 
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // Twoja konfiguracja Firebase
@@ -24,35 +24,39 @@ const db = getFirestore(app);
 export const loginUser = async (email: string, password: string) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return userCredential.user;
-  } catch (error) {
+    const user = userCredential.user;
+
+    // Sprawdzamy, czy e-mail został zweryfikowany
+    if (!user.emailVerified) {
+      throw new Error("E-mail nie został zweryfikowany. Sprawdź swoją skrzynkę pocztową.");
+    }
+
+    return user;
+  } catch (error: unknown) {
+  if (error instanceof Error) {
     console.error("Login failed", error);
-    throw new Error("Login failed");
+    throw new Error("Login failed: " + error.message);
+  } else {
+    console.error("Login failed", error);
+    throw new Error("Login failed: Unknown error");
   }
+}
 };
 
 // Funkcja rejestracji użytkownika
 export const registerUser = async (email: string, password: string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    return userCredential.user;
+    const user = userCredential.user;
+
+    // Wysyłanie e-maila weryfikacyjnego
+    await sendEmailVerification(user);
+    console.log("Rejestracja zakończona. Wysłano e-mail weryfikacyjny!");
+
+    return user;
   } catch (error) {
     console.error("Registration failed", error);
     throw new Error("Registration failed");
-  }
-};
-
-// Funkcja do zapisu nickname do Firestore
-export const addUserNickname = async (userId: string, nickname: string) => {
-  try {
-    await addDoc(collection(db, "users"), {
-      userId,
-      nickname,
-      createdAt: new Date(),
-    });
-    console.log("Nickname zapisany do Firestore!");
-  } catch (error) {
-    console.error("Błąd zapisu nickname'a:", error);
   }
 };
 
@@ -66,5 +70,4 @@ export const logoutUser = async () => {
   }
 };
 
-// Eksportujemy instancję auth i db na wypadek potrzeby w innych plikach
 export { auth, db, collection, addDoc };

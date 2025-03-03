@@ -10,7 +10,7 @@ export const RegisterView = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string>("");
- // const [name, setName] = useState(""); // Dodajemy stan dla name
+  const [message, setMessage] = useState<string>("");
 
   // Funkcja do obsługi wysyłania formularza
   const handleSubmit = async (e: React.FormEvent) => {
@@ -18,11 +18,9 @@ export const RegisterView = () => {
     try {
       // Wywołanie funkcji rejestracji
       await registerUser(email, password);
-      alert("Konto zostało utworzone pomyślnie!");
-      // Możesz przekierować użytkownika po zarejestrowaniu
-      window.location.href = "/login"; // Przykład przekierowania do strony logowania
-    } catch {
-      setError("Błąd: Konto już istnieje.");
+      setMessage("Konto zostało utworzone pomyślnie. Sprawdź swoją skrzynkę pocztową, aby zweryfikować e-mail.");
+    } catch  {
+      setError("Błąd: Konto już istnieje lub wystąpił inny problem.");
     }
   };
 
@@ -75,6 +73,7 @@ export const RegisterView = () => {
           Dalej!
         </button>
         {error && <p className={styles.errorMessage}>{error}</p>} {/* Wyświetlanie błędu */}
+        {message && <p className={styles.successMessage}>{message}</p>} {/* Wyświetlanie komunikatu sukcesu */}
       </form>
       <div className={styles.downContainer}>
         <p>Wchodzisz na własne ryzyko!</p>

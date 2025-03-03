@@ -33,6 +33,8 @@ const CompleteRegistration = () => {
     return () => unsubscribe(); // Oczyszczenie subskrypcji
   }, [auth, router, db]);
 
+
+
   const handleSaveNickname = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !nickname.trim()) return;
@@ -57,6 +59,7 @@ const CompleteRegistration = () => {
 
   return (
     <section className={styles.registrationPage}>
+      <h1 className={styles.title}>Legendy Rynsztoka</h1>
       <h2>Uzupełnij swoje dane</h2>
       
       <form onSubmit={handleSaveNickname} className={styles.formContainer}>
@@ -68,7 +71,7 @@ const CompleteRegistration = () => {
           required
         />
         
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className={styles.submitButton}>
           {loading ? "Zapisywanie..." : "Dalej"}
         </button>
       </form>
