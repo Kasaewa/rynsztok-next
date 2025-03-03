@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { auth, db } from "../../../services/firebaseConfig";
+//import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+//import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import styles from "./styles/CompleteRegistrationView.module.scss";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 
 const CompleteRegistration = () => {
@@ -12,8 +15,8 @@ const CompleteRegistration = () => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
-  const auth = getAuth();
-  const db = getFirestore();
+  //const auth = getAuth();
+  //const db = getFirestore();
 
   
   // Pobieranie zalogowanego użytkownika

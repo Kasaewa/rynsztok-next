@@ -1,3 +1,4 @@
+"use client"
 // src/services/FirebaseConfig.ts
 
 import { initializeApp, getApps, getApp  } from "firebase/app";
