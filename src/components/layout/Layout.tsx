@@ -10,7 +10,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   // Sprawdzamy czy jesteśmy na stronie logowania lub rejestracji
-   const isAuthPage = pathname === "/" || pathname === "/login" || pathname === "/register" || pathname === "/complete-registration.tsx";
+   const isAuthPage = pathname === "/" || pathname === "/login" || pathname === "/register" || pathname === "/complete-registration" || pathname === "/hellopage";
 
   // Jeśli jesteśmy na stronie auth, zwracamy tylko children bez layoutu - bo nie chcemy mieć bocznego menu i gornego menu i stopki
   if (isAuthPage) {

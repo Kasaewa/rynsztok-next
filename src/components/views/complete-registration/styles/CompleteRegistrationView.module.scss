@@ -5,7 +5,7 @@
   justify-content: flex-start;
   height: 100vh;
   padding: 0 16px;
-  background-image: url("/images/backgrounds/background.png");
+  background-image: url("/images/backgrounds/background3.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -20,17 +20,30 @@
   font-weight: 400;
   font-size: 128px;
   color: #fff;
-  text-shadow: 28px 28px 28px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 28px 28px 28px 0 rgba(0, 0, 0, 0.9);
   -webkit-text-stroke: 25px #1b1d1f;
   margin: 20px 20px;
   paint-order: stroke fill;
   padding: 20px;
 }
 
+.completeBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 20px;
+  width: auto;
+  background: rgba(217, 217, 217, 0.9);
+  align-items: center;
+  margin: 0;
+  padding: 40px;
+}
+
 .title2 {
-  font-weight: 800;
+  font-weight: 600;
   font-size: 36px;
-  color: #1b1d1f;
+  color: #fff;
+  -webkit-text-stroke: 8px #1b1d1f;
   margin: 0;
   paint-order: stroke fill;
   margin-top: 0;
@@ -63,6 +76,23 @@
   }
 }
 
+.genderSelection {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  color: #1b1d1f;
+  justify-content: space-between;
+}
+
+.gender {
+  margin-right: 20px;
+  margin-right: 20px;
+}
+.gender input[type="radio"] {
+  width: 20px;
+  height: 20px;
+}
+
 .submitButton {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   background: #646423;
@@ -77,5 +107,11 @@
 
   &:hover {
     background-color: #ffcc00;
+  }
+}
+
+@media (max-width: 768px) {
+  .registrationPage {
+    background-attachment: scroll; /* Naprawia problem na mobile */
   }
 }

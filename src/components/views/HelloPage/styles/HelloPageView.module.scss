@@ -5,7 +5,7 @@
   justify-content: flex-start;
   height: 100vh;
   padding: 0 16px;
-  background-image: url("/images/backgrounds/background.png");
+  background-image: url("/images/backgrounds/background3.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -15,49 +15,131 @@
   overflow-y: auto;
 }
 
+.helloUpper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1328px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
 .title {
   font-family: "Passero One", sans-serif;
   font-weight: 400;
-  font-size: 128px;
+  font-size: 24px;
+  text-align: center;
   color: #fff;
-  text-shadow: 28px 28px 28px 0 rgba(0, 0, 0, 0.5);
-  -webkit-text-stroke: 25px #1b1d1f;
-  margin: 20px 0;
+  -webkit-text-stroke: 12px #1b1d1f;
   paint-order: stroke fill;
-  padding: 20px;
+  margin-left: 60px;
+  margin-top: 20px;
 }
 
 .submitButton {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background: #646423;
+  background: #3a3361;
   border-radius: 20px;
-  padding: 10px;
-  width: 274px;
-  height: 50px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 24px;
+  border: 4px solid #bdaa3c;
+  padding: auto;
+  width: 124px;
+  height: 32px;
+  font-family: "Passero One", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
   text-align: center;
   color: #fff;
-  border: none;
-  margin-top: 48px;
+  margin-top: 20px;
 
   &:hover {
     background-color: #ffcc00;
   }
 }
 
-.downContainer {
-  width: 600px;
-  height: 70px;
-  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
-  border-radius: 16px;
-  background: #646423;
+.hellopageContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 1328px;
+  background: rgba(217, 217, 217, 0.8);
+  align-items: center;
+  margin: 0;
+}
+
+.nameavatarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 25%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.nameContainer {
+  border-radius: 20px;
+  padding: 10px;
+  width: 256px;
+  height: 64px;
+  background: #3a3361;
+  border: 4px solid #bdaa3c;
   font-family: "Passero One", sans-serif;
   font-weight: 400;
-  font-size: 36px;
+  font-size: 32px;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  border-radius: 8px;
+  background: white;
+  border: 4px solid #bdaa3c;
+  margin: 0;
+}
+
+.textContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 75%;
+}
+
+.textBox {
+  border-radius: 20px;
+  width: 100%;
+  padding: 10px;
+  padding-bottom: 0;
+  background: #3a3361;
+  border: 4px solid #bdaa3c;
+  margin: 0;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.titleText {
+  margin: 0;
+  font-family: "Passero One", sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: #fff;
+  -webkit-text-stroke: 12px #1b1d1f;
+  paint-order: stroke fill;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-family: "Montserrat", serif;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: left;
+  color: #fff;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.text a {
+  color: rgb(103, 113, 255); /* Różowy kolor linków */
+  text-decoration: none; /* Usunięcie domyślnego podkreślenia */
+}
+.text a:hover {
+  text-decoration: underline; /* Podkreślenie przy najechaniu */
 }
